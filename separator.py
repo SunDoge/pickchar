@@ -3,7 +3,7 @@ import numpy as np
 
 
 def stdChar(array, center):
-    # print center
+
     canvas = np.zeros((27, 27), np.uint8)
     for x, y in array:
         xx = x - center[0] + 13
@@ -33,10 +33,8 @@ def separate(img):
 
     center = np.int8(center)
     Z = np.int8(Z)
+    char = []
+    for k in np.argsort(center[:, 1]):
+        char.append(stdChar(Z[label.ravel() == k], center[k]))
 
-    A = stdChar(Z[label.ravel() == 0], center[0])
-    B = stdChar(Z[label.ravel() == 1], center[1])
-    C = stdChar(Z[label.ravel() == 2], center[2])
-    D = stdChar(Z[label.ravel() == 3], center[3])
-
-    return A, B, C, D
+    return char[0], char[1], char[2], char[3]
