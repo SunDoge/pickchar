@@ -6,9 +6,9 @@ def stdChar(array, center):
     # print center
     canvas = np.zeros((27, 27), np.uint8)
     for x, y in array:
-        xx = x - center[0] + 14
-        yy = y - center[1] + 14
-        if xx > -1 and xx < 28 and yy > -1 and yy < 28:
+        xx = x - center[0] + 13
+        yy = y - center[1] + 13
+        if xx > -1 and xx < 27 and yy > -1 and yy < 27:
             canvas[xx][yy] = 255
 
     return canvas
